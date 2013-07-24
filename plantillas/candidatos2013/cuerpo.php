@@ -273,7 +273,7 @@
 			</div>
 			<script type="text/template" id="lista">
 					<% _.each(noticias_json, function(noticia) { %>
-						<article id="<% print(noticia.id); %>">
+						<article class="<% print(noticia.medio); %>" id="<% print(noticia.id); %>">
 							<section class="info-noticia">
 								<a href="<% print(noticia.link); %>" target="_blank">
 									<h3>
@@ -288,8 +288,15 @@
 					<% }); %>
 			</script>
 			<div class="las-noticias division">
-				<h2>Noticias de Política<small> por <a href="http://eldiarionuevodia2.com.ar" target="_blank">El Diario Nuevo Día</a></small></h2>
-				<div id="noticias">
+				<h2>Noticias de Política</h2>
+				<span>En: <a href="javascript:void(0)" id="nuevodia" target="_blank">El Diario Nuevo Día</a> - <a href="javascript:void(0)" id="vocesyapuntes" target="_blank">Voces y Apuntes</a> - <a href="javascript:void(0)" id="tiemposur" target="_blank">Tiempo Sur</a> - <a href="javascript:void(0)" id="elperiodico" target="_blank">El Periódico</a></span>
+				<div class="noticias" id="noticias_nuevodia">
+				</div>
+				<div class="noticias" id="noticias_vocesyapuntes">
+				</div>
+				<div class="noticias" id="noticias_tiemposur">
+				</div>
+				<div class="noticias" id="noticias_elperiodico">
 				</div>
 			</div>
 				
