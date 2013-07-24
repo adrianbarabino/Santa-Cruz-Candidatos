@@ -1,14 +1,14 @@
 
 		<section id="contenido">
 			<section class="pagina" id="inicio">
-				<div class="sobre-elecciones division">
+				<div id="sobre-elecciones" class="division">
 					<h2>Sobre las elecciones PASO</h2>
 					<figure class="imagen-izquierda">
 						<img src="./plantillas/<?php echo $plantilla; ?>/imagenes/urnas.jpg" alt="Urnas">
 					</figure>
 					<p>El próximo 11 de Agosto se celebrarán las <a href="http://www.elecciones.gov.ar/regimen/primarias.htm">PASO (Primarias Abiertas Simultaneas y Obligatorias) </a>en todo el país, y desde el pasado 9 de Julio comenzaron las campañas de la mayoría de los candidatos tanto en Santa Cruz como en todo el país.</p><p>				Estas elecciones primarias se realizan para decidir que listas de cada partido o frente electoral se podrán postular en las elecciones generales de Octubre, sólo las listas que reúnan el 1.5% de los votos para el distrito en el cual compiten podrán participar en las generales.</p><p>				Desde ayer está disponible en internet el <a href="http://www.padrones.gob.ar">sistema de consultas del padrón electoral</a>, para poder consultar cual será el lugar donde deberemos votar, además, en este año se hace efectiva la <a href="http://www.elecciones.gov.ar/normativa/archivos/ley_n%C2%BA_26774_de_ciudadania_argentina.pdf">ley 26.774</a> que permite a los jóvenes desde los 16 años poder participar en las elecciones.</p><p>				En nuestra provincia habrán 8 listas para estas elecciones:</p><p>				El <strong>FPV</strong> va con una lista única, encabezada por Mauricio Gómez Bull, diputado provincial por el pueblo de Río Gallegos, seguido por Ana María Urricelqui, ex Ministro de Desarrollo Social y el Intendente de El Calafate, Javier Belloni. La lista la completan Matias Mazú, Matilde Reyes y Claudia Picuntureo.</p><p>				Mientras tanto el <strong>PJ</strong>, liderado por el gobernador de la provincia, presentó tres listas.				<ul>					<li>La primera la encabeza Nieves Beroiza, actual Ministro de Desarrollo Social, junto con Juan Carlos Batarev y el Dr. Néstor Hernandez, actual director del Hospital de Las Heras. Le siguen Adriana Casatti de Caleta Olivia, Gabriela Peralta y el concejal de El Calafate Juan Pailallef.</li>					<li>Los diputados provinciales Alejandro Victoria y Selsa Hernández encabezan una segunda lista, en conjunto con Mónica Asencio, Ana Villaroel, Victor Lavié, de 28 de Noviembre, y Jorgelina Pavez de Pico Truncado.</li>					<li>Marcelo Turchetti encabeza la tercera lista, acompañado de Fanny Barrera, Angel Zanni, Mario Albornoz, Erica Jaramillo y Pablo Capra.</li>				</ul>				<strong>Union para Vivir Mejor</strong> presentará dos listas, tras algunos distanciamientos y acercamientos:				<ul>					<li>La primera será encabezada por el actual diputado nacional Eduardo Costa, secundado por Susana Toledo de El Calafate y Adela Gomez de la CC de Caleta Olivia. Esta lista la completan Gabriela Mestelán de Encuentro Ciudadano, José María Carambia de Las Heras y Jorge Fernández.</li>					<li>La segunda lista de este frente electoral es el Proyecto Alternativo, encabezada por Facundo Prades, con Johana Busto, el ex diputado provincial de la UCR, Jorge Cruz, Sandra Mac Lean, Daniel Fernández de El Calafate y Liliana Andrade.</li>				</ul>				El <strong>Frente del Pueblo</strong> integrado por el <strong>MST</strong> y el <strong>PTP</strong> presenta a Emilio Poliak a la cabeza, acompañado por la dirigente mapuche de Caleta Olivia, Celia Rañil y Silvio Rotman de Río Gallegos.</p><p>				Mientras tanto la lista del <strong>Partido Obrero</strong> está encabezada por Omar Latini, secundado por Elida Ramos, Juan Manuel Valentín, de la juventud del PO, Ivana Nazer de Gregores, docente, Roxana Espinoza Saucedo de Las Heras y Fabio Seguel de Los Antiguos, referente ambiental de la zona.</p>
 				</div>
-				<div class="los-candidatos division">
+				<div id="los-candidatos" class"division">
 				<h2>Los candidatos</h2>
 				<p>A continuación podrás ver las caras de la mayoría de los candidatos, y sus perfiles en las redes sociales, específicamente Twitter y Facebook, algunos no se encuentran ya que no tienen presencia en aquellos sitios de internet.</p>
 
@@ -271,6 +271,7 @@
 							<div class="mascara"></div>
 				</div>
 			</div>
+		</div>
 			<script type="text/template" id="lista">
 					<% _.each(noticias_json, function(noticia) { %>
 						<article class="<% print(noticia.medio); %>" id="<% print(noticia.id); %>">
@@ -287,9 +288,9 @@
 						</article>
 					<% }); %>
 			</script>
-			<div class="las-noticias division">
+			<div id="las-noticias" class="division">
 				<h2>Noticias de Política</h2>
-				<span>En: <a href="javascript:void(0)" id="nuevodia" target="_blank">El Diario Nuevo Día</a> - <a href="javascript:void(0)" id="vocesyapuntes" target="_blank">Voces y Apuntes</a> - <a href="javascript:void(0)" id="tiemposur" target="_blank">Tiempo Sur</a> - <a href="javascript:void(0)" id="elperiodico" target="_blank">El Periódico</a></span>
+				<span>En: <a href="javascript:void(0)" id="nuevodia" target="_blank" class="medio_actual">El Diario Nuevo Día</a> - <a href="javascript:void(0)" id="vocesyapuntes" target="_blank">Voces y Apuntes</a> - <a href="javascript:void(0)" id="tiemposur" target="_blank">Tiempo Sur</a> - <a href="javascript:void(0)" id="elperiodico" target="_blank">El Periódico</a></span>
 				<div class="noticias" id="noticias_nuevodia">
 				</div>
 				<div class="noticias" id="noticias_vocesyapuntes">

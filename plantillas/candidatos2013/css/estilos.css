@@ -3,6 +3,7 @@ body{
 	font-family: "Open Sans", Arial;
 	background:#222 url("../imagenes/textura.png");
 	color:#eee;
+	font-smoothing: antialiased;
 }
 
 
@@ -35,6 +36,25 @@ nav ul li{
 
 nav ul li a{
 	color:white;
+}
+
+nav ul li.activo a{
+	color:#222;
+}
+
+nav ul li.activo{
+	background:#eee;
+}
+.las-noticias span{
+	display:block;
+	text-align:center;
+}
+.las-noticias span a{
+	padding: 0.2em 0.4em;
+}
+.las-noticias span a.medio_actual{
+	background: #555;
+	color: white;
 }
 
 #noticias_vocesyapuntes, #noticias_tiemposur, #noticias_elperiodico{

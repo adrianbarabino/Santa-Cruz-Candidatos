@@ -1,17 +1,64 @@
 console.log("Aplicación Iniciada");
 var noticias_json = [];
 $(document).on("ready", iniciar);
+// Cache selectors
+var lastId,
+    topMenu = $("nav ul"),
+    topMenuHeight = topMenu.outerHeight()+15,
+    // All list items
+    menuItems = topMenu.find("a"),
+    // Anchors corresponding to menu items
+    scrollItems = menuItems.map(function(){
+      var item = $($(this).attr("href"));
+      if (item.length) { return item; }
+    });
 
+// Bind click handler to menu items
+// so we can get a fancy scroll animation
+menuItems.click(function(e){
+  var href = $(this).attr("href"),
+      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
+  $('html, body').stop().animate({ 
+      scrollTop: offsetTop
+  }, 300);
+  e.preventDefault();
+});
+
+// Bind to scroll
+$(window).scroll(function(){
+   // Get container scroll position
+   var fromTop = $(this).scrollTop()+topMenuHeight;
+   
+   // Get id of current scroll item
+   var cur = scrollItems.map(function(){
+     if ($(this).offset().top < fromTop)
+       return this;
+   });
+   // Get the id of the current element
+   cur = cur[cur.length-1];
+   var id = cur && cur.length ? cur[0].id : "";
+   
+   if (lastId !== id) {
+       lastId = id;
+       // Set/remove active class
+       menuItems
+         .parent().removeClass("activo")
+         .end().filter("[href=#"+id+"]").parent().addClass("activo");
+   }                   
+});
 function iniciar (info) {
 	
     $('nav ul').smint({
     	'scrollSpeed' : 1000
     });
     $(".las-noticias > span a").on("click", function (info) {
+    	$(".medio_actual").removeClass("medio_actual");
+    	$(this).addClass("medio_actual");
     	var id_medio = $(this).attr("id");
     	console.log(id_medio);
-    	$(".noticias").slideUp();
-    	$("#noticias_"+id_medio).slideDown();
+    	$(".noticias").slideUp('200');
+    	$("#noticias_"+id_medio).slideDown('200');
+    	cargar_scrollspy();
     })
 	$("#candidatos article figure").each(function (i, val) {
 		id = $(this).parent().attr("id");
@@ -28,6 +75,10 @@ function iniciar (info) {
 		  });
 	})
 
+
+
+
+
 	// Lector de Feeds
 
 
@@ -39,11 +90,21 @@ function iniciar (info) {
 	cargar_pagina(url_tiemposur, "#noticias_tiemposur");
 	var url_elperiodico = "http://www.santacruzcandidatos.com.ar/noticias.php?medio=elperiodico";
 	cargar_pagina(url_elperiodico, "#noticias_elperiodico");
+		// ScrollSpy 
 
+
+		function cargar_scrollspy () {
+
+		}
 	function cargar_pagina(url,id_contenedor){
+		if(id_contenedor == "#noticias_nuevodia"){
+			valor = false;
+		}else{
+			valor = true;
+		}
 	   var xml = $.ajax({
 	      url: url,
-	      async: true,
+	      async: valor,
 	      success: function(xml){
 	         $(id_contenedor).html("");
 	         cargar_rss(xml, id_contenedor);
@@ -94,5 +155,8 @@ function iniciar (info) {
 	  	  var compilado = _.template($('#lista').html());
    		  $(id_contenedor).html( compilado(noticias_json) ); 
    		  noticias_json = [];
+   		  if(id_contenedor == "#noticias_tiemposur"){
+   		  	cargar_scrollspy();
+   		  }
 	}
 }

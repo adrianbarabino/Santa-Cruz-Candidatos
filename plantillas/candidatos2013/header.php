@@ -4,9 +4,9 @@
 		</header>
 		<nav>
 			<ul>
-				<li><a href="javascript:void(0);" id="sobre-elecciones">Las elecciones PASO</a></li>
-				<li><a href="javascript:void(0);" id="los-candidatos">Los Candidatos</a></li>
-				<li><a href="javascript:void(0);" id="las-noticias">Las Noticias</a></li>
+				<li><a href="#sobre-elecciones">Las elecciones PASO</a></li>
+				<li><a href="#los-candidatos">Los Candidatos</a></li>
+				<li><a href="#las-noticias">Las Noticias</a></li>
 
 			</ul>
 		</nav>
