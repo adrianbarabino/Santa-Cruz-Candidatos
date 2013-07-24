@@ -11,3 +11,4 @@
 	<title>Santa Cruz Candidatos</title>
 </head>
 <body>
+<section id="mascara-bg">

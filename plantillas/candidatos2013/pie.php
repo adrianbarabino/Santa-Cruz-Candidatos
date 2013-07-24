@@ -14,5 +14,6 @@
 	
 	<!-- Ahora el JS propio -->
 	<script src="./plantillas/<?php echo $plantilla; ?>/js/principal.js"></script>
+</section>
 </body>
 </html>

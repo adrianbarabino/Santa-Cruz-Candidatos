@@ -6,7 +6,9 @@ body{
 	font-smoothing: antialiased;
 }
 
-
+#mascara-bg{
+	background: rgba(0, 173, 255, 0.22);
+}
 a{
 	text-decoration:none;
 }
@@ -22,7 +24,7 @@ nav ul{
 	width:100%;
 	max-width:950px;
 	padding:5px;
-	background:#555;
+	background: #095572;
 	color:white;
 	z-index:110;
 	text-align:center;
