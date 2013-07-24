@@ -7,13 +7,40 @@ body{
 
 
 a{
-	color:#333;
 	text-decoration:none;
-	background:#eee;
-	border-radius:0.3em;
-	padding:0 0.2em;
 }
 
+nav{
+	display:block;
+}
+nav ul{
+	list-style: none;
+	display:block;
+	margin:0;
+	padding:0;
+	width:100%;
+	max-width:950px;
+	padding:5px;
+	background:#555;
+	color:white;
+	z-index:110;
+}
+
+nav ul li{
+	display:inline-block;
+	line-height:2em;
+}
+
+nav ul li a{
+	color:white;
+}
+
+#noticias article {
+display: inline-block;
+width: 49%;
+vertical-align: top;
+padding: 1em 0;
+}
 
 #contenedor{
 	max-width:960px;
@@ -31,4 +58,236 @@ footer{
 	width:100%;
 	margin:0 auto;
 	text-align:center;
+}
+
+#contenido section div > h2{
+	padding-top:0.5em;
+	border-bottom: 2px dashed #000;
+}
+
+
+figure.imagen-izquierda{
+	float: left;
+	margin: 0 1em 0.5em 0;
+	max-width:250px;
+	width:100%;
+}
+
+
+/* CSS de los Candidatos */
+
+
+#candidatos{
+	font-size:12px;
+}
+div.contenedor-candidato{
+	padding:0;
+	margin:0;
+	height:255px;
+	transition:all 0.3s ease-in-out;
+	display: inline-block;
+	position: relative;
+	margin-bottom:0.3em;
+	z-index:100;
+}
+div.contenedor-candidato:hover h2, div.contenedor-candidato:hover span{
+	position:relative;
+	z-index:105;
+}
+div.contenedor-candidato:hover .mascara{
+	box-shadow:0 0 1em 0 rgba(0,0,0,0.5),inset 0 0 50px -10px rgba(0,0,0,0.8);
+	transform: scale(1.0);
+	z-index:100;
+	border:1px inset rgba(0,0,0,0.5);
+
+}
+div.contenedor-candidato:hover {
+	box-shadow:0 0 1em 0 rgba(0,0,0,0.5),inset 0 0 50px -10px rgba(0,0,0,0.8);
+	transform: scale(1.05);
+	z-index:106;
+
+}
+
+div.mascara{
+	position:absolute;
+	width:170px;
+	height:255px;
+	top:0;
+	left:0;
+
+}
+
+
+#candidatos article{
+	background:#222;
+	color:white;
+	width:170px;
+	height:255px;
+	display:inline-block;
+	vertical-align: top;
+
+	text-align:center;
+
+}
+
+#candidatos article:hover{
+}
+
+#candidatos article > * {
+}
+
+#candidatos article span{
+	font-weight:300;
+}
+
+#candidatos article figure{
+	width:100%;
+	margin:0;
+	height:150px;
+	background-size:100%;
+}
+
+#candidatos article figure img{
+	width: 100%;
+}
+
+#candidatos article h2{
+	font-size:1.3em;
+	font-weight:800;
+	margin-bottom:0;
+}
+
+
+
+#candidatos #costa figure, #prades figure{
+	background-position: 0 -10px;
+}
+
+#candidatos #gaby figure, #adela figure, #toledo figure, #turchetti figure{
+	background-position: 0 -30px;
+}
+
+#candidatos #nieves figure{
+	background-size: 170%;
+	background-position: 0 -40px;
+}
+
+#candidatos #belloni figure{
+	background-size: 130%;
+	background-position: -50px -10px;
+}
+
+#candidatos #elida figure{
+	background-size: 150%;
+	background-position: -30px -35px;
+}
+
+#candidatos #turchetti figure{
+	background-size: 200%;
+	background-position: -140px -150px;
+}
+
+#candidatos #celia figure{
+	background-size: 160%;
+}
+#candidatos #cruz figure{
+	background-size: 110%;
+	background-position: 0 -30px;
+}
+
+#candidatos #latini figure{
+	background-size: 150%;
+	background-position: -40px -2px;
+}
+
+#candidatos #bull figure{
+	background-size: 180%;
+	background-position: -150px 0;
+}
+#candidatos #victoria figure{
+	background-size: 180%;
+	background-position: 210px -10px;
+}
+
+#candidatos #valentin figure{
+	background-size: 150%;
+	background-position: 0 -20px;
+}
+
+#candidatos #barrera figure{
+	background-size: 500%;
+	background-position: -190px -80px;
+}
+.social{
+	text-align: right;
+	padding-right: 1em;
+	position:absolute;
+	bottom: 0;
+	right: 0;
+	z-index:105;
+}
+
+
+#candidatos .pj{
+	background-color:#25c9e4;
+
+}
+
+#candidatos .po{
+	background-color:#bc2024;
+
+}
+
+#candidatos .union{
+	background-color:#b02312;
+
+}
+
+#candidatos .fpv{
+	background-color:#089bc7;
+
+}
+
+#candidatos .mst{
+	background-color:#f80302;
+
+}
+
+#candidatos .alternativo{
+	background-color:#82212a;
+
+}
+
+a i{
+	text-shadow: 0 0 4px rgba(0,0,0,.5);
+	transition: all 0.4s ease-in-out;
+}
+
+a i.icon-twitter{
+	color:#fff;
+}
+a i.icon-facebook{
+	color: #fff;
+
+}
+
+#candidatos a:hover{
+	text-decoration:none;
+}
+
+.icon-4x{
+text-shadow: 0 0 5px rgba(0,0,0,1), 0 0 80px #fff!important;	
+font-size:8em;
+}
+
+.icon-facebook.icon-4x{
+	color: #6D8BC9;
+}
+.icon-twitter.icon-4x{
+	color:#9AE4E8;
+
+}
+
+#bull h2{
+	font-size:1.08em;
 }
