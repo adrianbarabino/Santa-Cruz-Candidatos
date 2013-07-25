@@ -35,14 +35,16 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 			///////////////////////////////////
 
 			// get initial top offset for the menu 
-			var stickyTop = $('.smint').offset().top;	
+			// var stickyTop = $('.smint').offset().top;	
+			var stickyTop = 230.203125;	
+			// Este cambio es para que no se bugee la barra...
 
 			// check position and make sticky if needed
 			var stickyMenu = function(){
 				
 				// current distance top
 				var scrollTop = $(window).scrollTop(); 
-							
+				console.log("Scrolltop es: "+scrollTop+" y el Sticky top es: "+stickyTop);
 				// if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
 				if (scrollTop > stickyTop) { 
 					$('.smint').css({ 'position': 'fixed', 'top':0 }).addClass('fxd');

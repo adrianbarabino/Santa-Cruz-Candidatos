@@ -48,10 +48,8 @@ $(window).scroll(function(){
 });
 function iniciar (info) {
 	
-    $('nav ul').smint({
-    	'scrollSpeed' : 1000
-    });
-    $(".las-noticias > span a").on("click", function (info) {
+
+    $("#las-noticias > span a").on("click", function (info) {
     	$(".medio_actual").removeClass("medio_actual");
     	$(this).addClass("medio_actual");
     	var id_medio = $(this).attr("id");
@@ -157,6 +155,9 @@ function iniciar (info) {
    		  noticias_json = [];
    		  if(id_contenedor == "#noticias_tiemposur"){
    		  	cargar_scrollspy();
+   		  	    $('nav ul').smint({
+			    	'scrollSpeed' : 1000
+			    });
    		  }
 	}
 }
