@@ -17,6 +17,13 @@ body{
 	padding:0;
 }
 
+#padrones{
+	border: 0.5em solid gray;
+	border-radius: 1em;
+	margin:0 auto;
+	display:inherit;
+	margin-bottom:3em;
+}
 header{
 	text-align:center;
 }
@@ -129,7 +136,7 @@ footer{
 }
 
 #contenido section div > h2{
-	padding-top:0.5em;
+	margin-top:1em;
 	border-bottom: 2px dashed #000;
 }
 

@@ -46,9 +46,11 @@ $(window).scroll(function(){
          .end().filter("[href=#"+id+"]").parent().addClass("activo");
    }                   
 });
+
+
 function iniciar (info) {
 	
-
+	
     $("#las-noticias > span a").on("click", function (info) {
     	$(".medio_actual").removeClass("medio_actual");
     	$(this).addClass("medio_actual");
