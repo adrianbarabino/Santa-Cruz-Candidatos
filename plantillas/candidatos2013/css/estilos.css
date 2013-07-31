@@ -17,12 +17,38 @@ body{
 	padding:0;
 }
 
+.contenido-opinion{
+	display:none;
+	width: 100%;
+	margin-top: 2em;
+}
 #padrones{
 	border: 0.5em solid gray;
 	border-radius: 1em;
 	margin:0 auto;
 	display:inherit;
 	margin-bottom:3em;
+}
+
+
+.opinion{
+	background: rgb(0, 85, 128);
+	color: white;
+	padding: 0.3em 1em;
+	cursor: pointer;
+	margin: 1em 0;
+	transition: all 0.3s ease-in-out;
+}
+.opinion figure{
+	width: 12%;
+	border: 0.3em solid #666;
+	float: left;
+	margin: -1em 1em 0 0;
+}
+
+.opinion h3{
+	font-size: 1.5em;
+	margin: 0;
 }
 header{
 	text-align:center;
@@ -75,7 +101,7 @@ nav ul{
 nav ul li{
 	display:inline-block;
 	line-height:2em;
-	padding:0 2em;
+	padding:0 1em;
 }
 
 nav ul li a{
@@ -86,6 +112,14 @@ nav ul li a:hover{
 	color:#eee;
 	text-decoration: none;
 	text-shadow: 0 0 10px #aaa;
+}
+a:focus{
+	color:inherit;
+	text-decoration:none;
+	border:0;
+}
+.division{
+	min-height:600px;
 }
 
 nav ul li.activo a{
@@ -107,7 +141,7 @@ nav ul li.activo{
 	color: white;
 }
 
-#noticias_vocesyapuntes, #noticias_tiemposur, #noticias_elperiodico{
+#noticias_nuevodia, #noticias_tiemposur, #noticias_elperiodico{
 	display:none;
 }
 .noticias article {
@@ -232,8 +266,13 @@ div.mascara{
 	margin-bottom:0;
 }
 
-
-
+#premium{
+	display:none;
+}
+#candidatos #premium figure{
+	background-size:150%;
+	background-position:-40px;
+}
 #candidatos #costa figure, #prades figure{
 	background-position: 0 -10px;
 }
@@ -282,6 +321,11 @@ div.mascara{
 #candidatos #victoria figure{
 	background-size: 180%;
 	background-position: 210px -10px;
+}
+
+#candidatos #poliak figure{
+	background-size: 140%;
+	background-position: -50px -15px;
 }
 
 #candidatos #valentin figure{

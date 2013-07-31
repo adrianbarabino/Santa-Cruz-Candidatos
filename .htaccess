@@ -27,5 +27,22 @@ SetOutputFilter DEFLATE
   SetEnvIfNoCase Request_URI \.(?:avi|mov|mp4)$ no-gzip dont-vary
   SetEnvIfNoCase Request_URI \.mp3$ no-gzip dont-vary
  </IfModule>
-AuthName "Sitio en contrucción"
-AuthUserFile "/home/candidat/.htpasswds/public_html/passwd"
+
+
+ RewriteEngine on
+RewriteBase /
+
+RewriteRule ^donde-votar/ /index.php
+RewriteRule ^elecciones-paso/ /index.php
+RewriteRule ^candidatos/ /index.php
+RewriteRule ^inicio/ /index.php
+RewriteRule ^que-se-vota/ index.php
+RewriteRule ^noticias/ index.php
+RewriteRule ^opiniones/ index.php
+
+RewriteRule ^donde-votar /index.php
+RewriteRule ^elecciones-paso /index.php
+RewriteRule ^candidatos /index.php
+RewriteRule ^inicio /index.php
+RewriteRule ^que-se-vota /index.php
+RewriteRule ^opiniones /index.php

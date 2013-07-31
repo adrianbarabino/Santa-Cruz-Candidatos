@@ -1,6 +1,65 @@
 console.log("Aplicación Iniciada");
 var noticias_json = [];
 $(document).on("ready", iniciar);
+
+// Declaramos variables para Backbone
+var pagina_actual = "inicio";
+var carga_inicial = true;
+window.SCCandidatos = {};
+SCCandidatos.Views = {};
+SCCandidatos.Collections = {};
+SCCandidatos.Models = {};
+SCCandidatos.Routers = {};
+SCCandidatos.util = {};
+
+window.app = {};
+window.routers = {};
+window.plugs = {};
+window.views = {};
+window.collections = {};
+
+// Fin de vars de backbone
+
+function navegar_opiniones (elemento) {
+  if(carga_inicial){
+  	carga_inicial = false;
+  	offsetvalor = -100;
+  }else{
+  	offsetvalor = -50;
+  }
+		var offsetOpinion = $('#opiniones article#'+elemento).offset().top-topMenuHeight+offsetvalor;
+		$('html, body').stop().animate({ 
+		     scrollTop: offsetOpinion
+		}, 300);
+		id_opinion = elemento;
+		if($('#opiniones article#'+elemento).hasClass("abierto")){
+		$("#"+id_opinion+" > div").slideUp('200');
+		$('#opiniones article#'+elemento).removeClass("abierto");
+		$('#opiniones article#'+elemento).addClass("cerrado");
+		}else{
+		$("#"+id_opinion+" > div").slideDown('200');
+		$('#opiniones article#'+elemento).addClass("abierto");
+		$('#opiniones article#'+elemento).removeClass("cerrado");
+	}
+}
+function navegar (elemento) {
+  var href = $("nav ul li a:contains('"+elemento+"')").attr("href");
+
+  if(carga_inicial){
+  	carga_inicial = false;
+  	offsetvalor = -35;
+  }else{
+  	offsetvalor = 5;
+  }
+  var offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+offsetvalor;
+  $('html, body').stop().animate({ 
+      scrollTop: offsetTop
+  }, 300);
+
+  pagina_actual = $("nav ul li a:contains('"+elemento+"')").attr("href").split("#")[1];
+
+
+}
 // Cache selectors
 var lastId,
     topMenu = $("nav ul"),
@@ -15,14 +74,6 @@ var lastId,
 
 // Bind click handler to menu items
 // so we can get a fancy scroll animation
-menuItems.click(function(e){
-  var href = $(this).attr("href"),
-      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+1;
-  $('html, body').stop().animate({ 
-      scrollTop: offsetTop
-  }, 300);
-  e.preventDefault();
-});
 
 // Bind to scroll
 $(window).scroll(function(){
@@ -41,6 +92,13 @@ $(window).scroll(function(){
    if (lastId !== id) {
        lastId = id;
        // Set/remove active class
+       if(id){
+       pagina_actual = id;
+
+       }else{
+       	pagina_actual = "inicio";
+       }
+
        menuItems
          .parent().removeClass("activo")
          .end().filter("[href=#"+id+"]").parent().addClass("activo");
@@ -50,7 +108,20 @@ $(window).scroll(function(){
 
 function iniciar (info) {
 	
-	
+	$(".opinion").on("click", function (info) {
+		var id_opinion = $(this).attr("id");
+		if($(this).hasClass("abierto")){
+		$("#"+id_opinion+" > div").slideUp('200');
+		$(this).removeClass("abierto");
+		$(this).addClass("cerrado");
+			url = "opiniones"
+			Backbone.history.navigate(url, {trigger:false})
+		}else{
+			url = "opiniones/"+id_opinion;
+			Backbone.history.navigate(url, {trigger:true})
+		}
+
+	});
     $("#las-noticias > span a").on("click", function (info) {
     	$(".medio_actual").removeClass("medio_actual");
     	$(this).addClass("medio_actual");
@@ -58,7 +129,7 @@ function iniciar (info) {
     	console.log(id_medio);
     	$(".noticias").slideUp('200');
     	$("#noticias_"+id_medio).slideDown('200');
-    	cargar_scrollspy();
+
     })
 	$("#candidatos article figure").each(function (i, val) {
 		id = $(this).parent().attr("id");
@@ -77,7 +148,93 @@ function iniciar (info) {
 
 
 
+	// Inicio de Backbone
 
+
+    SCCandidatos.Routers.BaseRouter = Backbone.Router.extend({
+		routes: {
+			"" :  "inicio",
+			"inicio" :  "inicio",
+			"inicio/" :  "inicio",
+			"elecciones-paso" :  "elecciones_paso",
+			"elecciones-paso/" :  "elecciones_paso",
+			"que-se-vota" :  "que_se_vota",
+			"que-se-vota/" :  "que_se_vota",
+			"donde-votar" :  "donde_votar",
+			"donde-votar/" :  "donde_votar",
+			"candidatos" :  "candidatos",
+			"candidatos/" :  "candidatos",
+			"opiniones" :  "opiniones",
+			"opiniones/" :  "opiniones",
+			"opiniones/:opinion" :  "opiniones_id",
+			"opiniones/:opinion/" :  "opiniones_id",
+			"noticias" :  "noticias",
+			"noticias/" :  "noticias"
+		},
+		initialize : function(){
+			var self = this;
+
+		},
+		inicio: function(){
+
+		},
+		elecciones_paso: function(){
+			navegar("Elecciones PASO");
+		},
+		que_se_vota: function(){
+			navegar("Que se vota");
+		},
+		donde_votar: function(){
+			navegar("Donde votar");
+		},
+		candidatos: function(){
+			navegar("Candidatos");
+
+		},
+		opiniones: function(){
+			navegar("Opiniones");
+
+		},
+		opiniones_id: function(opinion){
+			console.log("Estoy en opiniones con ID");
+			console.log(opinion);
+			navegar_opiniones(opinion);
+
+		},
+		noticias: function(){
+			navegar("Noticias");
+
+		}
+	});
+    window.routers.base = new SCCandidatos.Routers.BaseRouter();
+
+
+	// De la siguiente forma, lee el atributo Rel del link
+	// y ahÃ­ saca la URL a donde "navegarÃ­a" la aplicaciÃ³n.
+	$("nav li a").on("click", function(e){
+		var url = $(this).attr("data-url");
+		console.log("Auch");
+		console.log("La pagina actual es: '"+pagina_actual+"' y vamos hacia '"+$(this).attr("href").split("#")[1]+"'");
+		if($(this).attr("href").split("#")[1] == pagina_actual){
+
+			Backbone.history.loadUrl(Backbone.history.fragment);
+		}else{
+
+		Backbone.history.navigate(url, {trigger:true})
+		}
+		e.preventDefault();
+	})
+	window.AppView = Backbone.View.extend({
+	  el: $("body"),
+	  events: {
+	  },
+	  cargarPagina: function () {
+
+	  }
+	});
+	var appview = new AppView;
+
+	// Fin de Backbone
 
 	// Lector de Feeds
 
@@ -93,8 +250,11 @@ function iniciar (info) {
 		// ScrollSpy 
 
 
-		function cargar_scrollspy () {
-
+		function carga_final () {
+			Backbone.history.start({
+					pushState : true,
+					root: "/"
+			});
 		}
 	function cargar_pagina(url,id_contenedor){
 		if(id_contenedor == "#noticias_nuevodia"){
@@ -107,7 +267,13 @@ function iniciar (info) {
 	      async: valor,
 	      success: function(xml){
 	         $(id_contenedor).html("");
+	         console.log(xml.getElementsByTagName('title'));
+	         if(xml.getElementsByTagName('title')[0].firstChild.data == 'ERROR: Tried to load source page, but remote server reported "403 Forbidden".'){
+	         	console.log("Ultra error");
+	         }else{
+
 	         cargar_rss(xml, id_contenedor);
+	         }
 	      }
 	   });
 	}
@@ -156,7 +322,7 @@ function iniciar (info) {
    		  $(id_contenedor).html( compilado(noticias_json) ); 
    		  noticias_json = [];
    		  if(id_contenedor == "#noticias_tiemposur"){
-   		  	cargar_scrollspy();
+   		  	carga_final();
    		  	    $('nav ul').smint({
 			    	'scrollSpeed' : 1000
 			    });

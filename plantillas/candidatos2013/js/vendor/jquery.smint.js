@@ -44,7 +44,7 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 				
 				// current distance top
 				var scrollTop = $(window).scrollTop(); 
-				console.log("Scrolltop es: "+scrollTop+" y el Sticky top es: "+stickyTop);
+				// console.log("Scrolltop es: "+scrollTop+" y el Sticky top es: "+stickyTop);
 				// if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
 				if (scrollTop > stickyTop) { 
 					$('.smint').css({ 'position': 'fixed', 'top':0 }).addClass('fxd');
@@ -74,14 +74,14 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
         		// stops empty hrefs making the page jump when clicked
 				e.preventDefault();
 
-				// get id pf the button you just clicked
-		 		var id = $(this).attr('id');
+				// // get id pf the button you just clicked
+		 	// 	var id = $(this).attr('id');
 				
-				// gets the distance from top of the div class that matches your button id minus the height of the nav menu. This means the nav wont initially overlap the content.
-				var goTo =  $('div.'+ id).offset().top -selectorHeight;
+				// // gets the distance from top of the div class that matches your button id minus the height of the nav menu. This means the nav wont initially overlap the content.
+				// var goTo =  $('div.'+ id).offset().top -selectorHeight;
 				
-				// Scroll the page to the desired position!
-				$("html, body").animate({ scrollTop: goTo }, scrollSpeed);
+				// // Scroll the page to the desired position!
+				// $("html, body").animate({ scrollTop: goTo }, scrollSpeed);
 
 			});	
 
