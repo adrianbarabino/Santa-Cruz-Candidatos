@@ -209,8 +209,6 @@ function iniciar (info) {
     window.routers.base = new SCCandidatos.Routers.BaseRouter();
 
 
-	// De la siguiente forma, lee el atributo Rel del link
-	// y ahÃ­ saca la URL a donde "navegarÃ­a" la aplicaciÃ³n.
 	$("nav li a").on("click", function(e){
 		var url = $(this).attr("data-url");
 		console.log("Auch");
