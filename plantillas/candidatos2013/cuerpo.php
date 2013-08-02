@@ -11,7 +11,7 @@
 			<div id="que-se-vota" class="division">
 				<h2>¿Qúé se vota en las PASO?</h2>
 				<br>
-<object width="853" height="480"><param name="wmode" value="opaque" /><param name="movie" value="//www.youtube.com/v/PKoHj3caLCA?hl=es_MX&amp;version=3&amp;theme=light"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/PKoHj3caLCA?hl=es_MX&amp;version=3&amp;theme=light&amp;showsearch=0&amp;modestbranding=1&amp;showinfo=0" type="application/x-shockwave-flash" width="853" height="480" wmode="opaque" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+<object width="853" height="480"><param name="wmode" value="opaque" /><param name="movie" value="//www.youtube.com/v/PKoHj3caLCA?hl=es_MX&amp;version=3&amp;theme=light"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/PKoHj3caLCA?hl=es_MX&amp;version=3&amp;theme=light&amp;showsearch=0&amp;modestbranding=1&amp;showinfo=0&amp;hd=1" type="application/x-shockwave-flash" width="853" height="480" wmode="opaque" allowscriptaccess="always" allowfullscreen="true"></embed></object>
 			</div>
 
 			<div id="donde-votar" class="division">
@@ -122,7 +122,7 @@
 							</article>
 							<div class="mascara"></div>
 						</div>
-						<div class="contenedor-candidato">
+						<!-- <div class="contenedor-candidato">
 							<article id="premium" class="candidato union" style="background: #3A3A3A;" data-toggle="popover" data-placement="auto left" title="Propuestas - Lista 999" data-content="Bajar la tarifa del transporte público">
 								<figure class="foto-candidato">
 									<img src="http://1.bp.blogspot.com/-MXvs0zPvtT8/UTJSUqIGjKI/AAAAAAAACEo/kWwDzBWk_VY/s320/facebook-profile-picture-no-pic-avatar.png" alt="">
@@ -137,7 +137,7 @@
 								</div>
 							</article>
 							<div class="mascara"></div>
-						</div>
+						</div> -->
 
 						<div class="contenedor-candidato">
 							<article id="costa" class="candidato union">

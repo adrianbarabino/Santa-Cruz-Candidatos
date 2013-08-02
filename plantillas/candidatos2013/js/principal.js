@@ -4,6 +4,8 @@ $(document).on("ready", iniciar);
 
 // Declaramos variables para Backbone
 var pagina_actual = "inicio";
+
+
 var carga_inicial = true;
 window.SCCandidatos = {};
 SCCandidatos.Views = {};
@@ -94,9 +96,17 @@ $(window).scroll(function(){
        // Set/remove active class
        if(id){
        pagina_actual = id;
-
+       url = id;
+       if(id == "las-noticias"){
+       	url = "noticias";
+       }
+       if(id == "sobre-elecciones"){
+       	url = "elecciones-paso";
+       }
+       Backbone.history.navigate(url+"/", {trigger:false})
        }else{
        	pagina_actual = "inicio";
+       Backbone.history.navigate(pagina_actual+"/", {trigger:false})
        }
 
        menuItems
@@ -233,6 +243,20 @@ function iniciar (info) {
 	var appview = new AppView;
 
 	// Fin de Backbone
+
+
+	// Recarga del iframe del padron cada 5 minutos y medio (a los 6 se cierra)
+	window.setInterval(recargar_padrones, 330000);
+	// 330000 milisegundos son 5 minutos y medio
+
+	function recargar_padrones (info) {
+		console.log("Acabo de recargar los padrones");
+		$('iframe').attr("src", $('iframe').attr("src"));
+
+	}
+
+	// fin de recarga
+
 
 	// Lector de Feeds
 
