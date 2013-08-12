@@ -32,17 +32,22 @@ SetOutputFilter DEFLATE
  RewriteEngine on
 RewriteBase /
 
-RewriteRule ^donde-votar/ /index.php
-RewriteRule ^elecciones-paso/ /index.php
-RewriteRule ^candidatos/ /index.php
-RewriteRule ^inicio/ /index.php
-RewriteRule ^que-se-vota/ index.php
-RewriteRule ^noticias/ index.php
-RewriteRule ^opiniones/ index.php
+RewriteRule ^donde-votar/ /grafico/
+RewriteRule ^elecciones-paso/ /grafico/
+RewriteRule ^candidatos/ /grafico/
+RewriteRule ^inicio/ /grafico/
+RewriteRule ^que-se-vota/ grafico/
+RewriteRule ^noticias/ grafico/
+RewriteRule ^opiniones/ grafico/
+RewriteRule ^resultados/ grafico/
 
-RewriteRule ^donde-votar /index.php
-RewriteRule ^elecciones-paso /index.php
-RewriteRule ^candidatos /index.php
-RewriteRule ^inicio /index.php
-RewriteRule ^que-se-vota /index.php
-RewriteRule ^opiniones /index.php
+RewriteRule ^donde-votar /grafico/
+RewriteRule ^elecciones-paso /grafico/
+RewriteRule ^candidatos /grafico/
+RewriteRule ^inicio /grafico/
+RewriteRule ^que-se-vota /grafico/
+RewriteRule ^opiniones /grafico/
+RewriteRule ^resultados /grafico/
+
+
+RewriteRule ^$ /grafico/ [L]

@@ -316,29 +316,9 @@
 					<% }); %>
 			</script>
 
-			<div id="opiniones" class="division">
-				<h2>Opiniones de los candidatos</h2>
-				<article class="opinion" id="opinion-poliak">
-					<figure>
-						<img src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-ash4/1003480_417172598402502_346177146_n.jpg" />
-					</figure>
-					<h3>Para cambiar hay que elegir una alternativa distinta</h3>
-					<small>por Emilio Poliak (MST)</small>
-
-					<div class="contenido-opinion">						
-						<p>Estas elecciones se dan en el marco de lo que muchos llaman “fin de ciclo” y que para nosotros no es otra cosa que el fracaso de un modelo que lleva más de 20 años en la provincia y diez en el país. Que se caracterizó por la entrega de nuestros recursos y bienes comunes a las corporaciones y por los negociados con empresarios amigos.</p>
-
-						<p>En nuestra provincia estamos sufriendo las consecuencias de este fracaso: crisis en la salud y educación públicas, salarios que no llegan a cubrir el costo de vida, falta de futuro para la juventud. Y los hechos de las últimas semanas en la zona norte han sido una expresión concluyente de lo que significa este modelo. Mientras Caleta Olivia sufre una crisis terrible por la falta de agua, apenas a unos 250 km, la minera San José Huevos Verdes consume 4 millones por día de este recurso esencial.</p>
-
-						<p>Pero el debate más importante es qué alternativa superadora logramos construir para que lo que venga no sea más de lo mismo o peor. Las opciones mayoritarias que hoy pretenden mostrarse como un cambio no lo son en realidad. El PJ fue parte fundamental de este proyecto aunque ahora pretenda mostrarse distinto y capitalizar el descontento con el kirchnerismo. Y la nueva Alianza comandada por la UCR, ya ha mostrado cuando le tocó gobernar que no representan ninguna solución para el pueblo. Es difícil pensar que la eliminación del impuesto al salario va a venir de la mano de los que lo impusieron cuando fueron gobierno, o que enfrentarán a las mineras cuando fueron ellos los que le abrieron las puertas en provincias donde gobernaron como Catamarca, o que enfrentarán la corrupción quienes impulsaron la Ley Banelco, o que implementarán otro modelo cuando su referente hace apenas dos años decía que Cristina era lo mejor que le podía pasar al país. Es una experiencia que ya fracasó.</p>
-
-						<p>Por eso para cambiar, hay que animarse a elegir algo distinto. El Frente del Pueblo que conformamos el MST junto al PTP y luchadores independientes lleva candidatos de trayectoria en la lucha por los derechos de los trabajadores, jóvenes y pueblos originarios. Y plantea un modelo alternativo que ponga nuestros recursos al servicio de las necesidades de los trabajadores y el pueblo. Si recuperamos los 12 mil millones de pesos que se llevan por año las corporaciones mineras y petroleras podemos solucionar los problemas más urgentes de nuestro pueblo (salario, educación, salud, vivienda) y promover un nuevo modelo de provincia donde los bienes comunes sean puestos en función de las necesidades sociales y no de las ganancias de unos pocos. Promoviendo además el desarrollo de energías limpias e industrias que no destruyan el medio ambiente.</p>
-
-						<p>Junto a esta propuesta central levantamos la necesidad de pasar a planta permanente a todos los trabajadores de las cooperativas, facilitadoras sociales y contratados. Terminar con los privilegios de los políticos mediante una ley que fije que ganen lo mismo que un empleado público y que si no cumplen sus promesas se los pueda someter a revocatoria de mandato. Y garantizar los derechos de la juventud, de las mujeres y de los pueblos originarios.</p>
-
-						<p>Votar al MST por un Frente del Pueblo es también fortalecer a quienes peleamos por la unidad de los luchadores, los sectores verdaderamente progresistas y la izquierda entendiendo que hace falta una nueva cultura donde se dejen de lado las mezquindades y el sectarismo. Donde los matices no impidan la unidad sino que la enriquezcan. Y abiertos a confluir con sectores que proviniendo de tradiciones diferentes acordamos en las transformaciones de fondo que hacen falta.</p>
-					</div>
-				</article>
+			<div id="resultados" class="division">
+				<h2>Resultados</h2>
+				<iframe  width="800" id="resultados-iframe" height="650" src="http://santacruzcandidatos.com/grafico/" frameborder="0"></iframe>
 			</div>
 			<div id="las-noticias" class="division">
 				<h2>Noticias</h2>

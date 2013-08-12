@@ -1,0 +1,1 @@
+[11-Aug-2013 21:20:27 America/Argentina/Buenos_Aires] PHP Warning:  preg_replace() [<a href='function.preg-replace'>function.preg-replace</a>]: Unknown modifier 't' in /home/candidat/public_html/grafico/index.php on line 7

@@ -54,6 +54,11 @@ header{
 	text-align:center;
 }
 
+#resultados-iframe{
+	margin:0 auto;
+	overflow: hidden;
+	display:inherit;
+}
 header h1, header h2{
 	text-shadow: 0 0 10em #fff;
 	transition:all 0.6s ease-in-out;

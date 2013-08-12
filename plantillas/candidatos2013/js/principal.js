@@ -22,28 +22,28 @@ window.collections = {};
 
 // Fin de vars de backbone
 
-function navegar_opiniones (elemento) {
-  if(carga_inicial){
-  	carga_inicial = false;
-  	offsetvalor = -100;
-  }else{
-  	offsetvalor = -50;
-  }
-		var offsetOpinion = $('#opiniones article#'+elemento).offset().top-topMenuHeight+offsetvalor;
-		$('html, body').stop().animate({ 
-		     scrollTop: offsetOpinion
-		}, 300);
-		id_opinion = elemento;
-		if($('#opiniones article#'+elemento).hasClass("abierto")){
-		$("#"+id_opinion+" > div").slideUp('200');
-		$('#opiniones article#'+elemento).removeClass("abierto");
-		$('#opiniones article#'+elemento).addClass("cerrado");
-		}else{
-		$("#"+id_opinion+" > div").slideDown('200');
-		$('#opiniones article#'+elemento).addClass("abierto");
-		$('#opiniones article#'+elemento).removeClass("cerrado");
-	}
-}
+// function navegar_opiniones (elemento) {
+//   if(carga_inicial){
+//   	carga_inicial = false;
+//   	offsetvalor = -100;
+//   }else{
+//   	offsetvalor = -50;
+//   }
+// 		var offsetOpinion = $('#opiniones article#'+elemento).offset().top-topMenuHeight+offsetvalor;
+// 		$('html, body').stop().animate({ 
+// 		     scrollTop: offsetOpinion
+// 		}, 300);
+// 		id_opinion = elemento;
+// 		if($('#opiniones article#'+elemento).hasClass("abierto")){
+// 		$("#"+id_opinion+" > div").slideUp('200');
+// 		$('#opiniones article#'+elemento).removeClass("abierto");
+// 		$('#opiniones article#'+elemento).addClass("cerrado");
+// 		}else{
+// 		$("#"+id_opinion+" > div").slideDown('200');
+// 		$('#opiniones article#'+elemento).addClass("abierto");
+// 		$('#opiniones article#'+elemento).removeClass("cerrado");
+// 	}
+// }
 function navegar (elemento) {
   var href = $("nav ul li a:contains('"+elemento+"')").attr("href");
 
@@ -118,20 +118,20 @@ $(window).scroll(function(){
 
 function iniciar (info) {
 	
-	$(".opinion").on("click", function (info) {
-		var id_opinion = $(this).attr("id");
-		if($(this).hasClass("abierto")){
-		$("#"+id_opinion+" > div").slideUp('200');
-		$(this).removeClass("abierto");
-		$(this).addClass("cerrado");
-			url = "opiniones"
-			Backbone.history.navigate(url, {trigger:false})
-		}else{
-			url = "opiniones/"+id_opinion;
-			Backbone.history.navigate(url, {trigger:true})
-		}
+	// $(".opinion").on("click", function (info) {
+	// 	var id_opinion = $(this).attr("id");
+	// 	if($(this).hasClass("abierto")){
+	// 	$("#"+id_opinion+" > div").slideUp('200');
+	// 	$(this).removeClass("abierto");
+	// 	$(this).addClass("cerrado");
+	// 		url = "opiniones"
+	// 		Backbone.history.navigate(url, {trigger:false})
+	// 	}else{
+	// 		url = "opiniones/"+id_opinion;
+	// 		Backbone.history.navigate(url, {trigger:true})
+	// 	}
 
-	});
+	// });
     $("#las-noticias > span a").on("click", function (info) {
     	$(".medio_actual").removeClass("medio_actual");
     	$(this).addClass("medio_actual");
@@ -174,10 +174,12 @@ function iniciar (info) {
 			"donde-votar/" :  "donde_votar",
 			"candidatos" :  "candidatos",
 			"candidatos/" :  "candidatos",
-			"opiniones" :  "opiniones",
-			"opiniones/" :  "opiniones",
-			"opiniones/:opinion" :  "opiniones_id",
-			"opiniones/:opinion/" :  "opiniones_id",
+			"resultados" :  "resultados",
+			"resultados/" :  "resultados",
+			// "opiniones" :  "opiniones",
+			// "opiniones/" :  "opiniones",
+			// "opiniones/:opinion" :  "opiniones_id",
+			// "opiniones/:opinion/" :  "opiniones_id",
 			"noticias" :  "noticias",
 			"noticias/" :  "noticias"
 		},
@@ -201,16 +203,20 @@ function iniciar (info) {
 			navegar("Candidatos");
 
 		},
-		opiniones: function(){
-			navegar("Opiniones");
+		resultados: function(){
+			navegar("Resultados");
 
 		},
-		opiniones_id: function(opinion){
-			console.log("Estoy en opiniones con ID");
-			console.log(opinion);
-			navegar_opiniones(opinion);
+		// opiniones: function(){
+		// 	navegar("Opiniones");
 
-		},
+		// },
+		// opiniones_id: function(opinion){
+		// 	console.log("Estoy en opiniones con ID");
+		// 	console.log(opinion);
+		// 	navegar_opiniones(opinion);
+
+		// },
 		noticias: function(){
 			navegar("Noticias");
 
@@ -251,7 +257,7 @@ function iniciar (info) {
 
 	function recargar_padrones (info) {
 		console.log("Acabo de recargar los padrones");
-		$('iframe').attr("src", $('iframe').attr("src"));
+		$('iframe[0]').attr("src", $('iframe').attr("src"));
 
 	}
 
