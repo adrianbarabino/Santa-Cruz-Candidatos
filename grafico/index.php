@@ -1,13 +1,16 @@
 <?php
 
-$filename = "http://elecciones2013.santacruz.gov.ar/datos.php";
+$filename = "http://www.santacruzcandidatos.com/grafico/data.php";
 
 $archivo2 = file_get_contents($filename);
+if(!$archivo2){
+	die("<h2>No se pudieron cargar los c&oacute;mputos por un error del sitio del Gobierno de la Provincia.</h2><h3>Intente más tarde por favor</h3>");
+}
 $archivo = preg_replace('/([\s\S]*)Lista 2([\s\S]*)<div class="porcentaje">(.*)%<\/([\s\S]*)Lista 38([\s\S]*)<div class="porcentaje">([\s\S]*)<span>(.*)<\/span>([\s\S]*)Lista 154([\s\S]*)<div class="porcentaje">([\s\S]*)<span>(.*)<\/span>([\s\S]*)Lista 501([\s\S]*)<div class="porcentaje">([\s\S]*)<span>(.*)<\/span>([\s\S]*)Lista 502([\s\S]*)<div class="porcentaje">(.*)%<\/([\s\S]*)([\s\S]*)/', '{ "pj" : "\3%", "fut": "\7", "po": "\11", "fpv": "\15", "union": "\18%"}', $archivo2);
 $mesas = preg_replace('/([\s\S]*)MESAS([\s\S]*)Totales([\s\S]*)<td class="cuadro1-p">(.*)<\/td>([\s\S]*)Escrutadas([\s\S]*)<td class="cuadro1-p">(.*)<\/td>([\s\S]*)<table class="totales">([\s\S]*)/', '{ "totales" : "\4", "escrutadas": "\7"}', $archivo2);
 $archivo = str_replace("%", "", $archivo);
 
-$datospj = preg_replace('/([\s\S]*)"Fuerza Santa Cruz"([\s\S]*)<div class="porcentaje2">(.*)%<\/div>([\s\S]*)"Eva Per&oacute;n"([\s\S]*)<div class="porcentaje2">(.*)%<\/div>([\s\S]*)"Lealtad y Militancia"([\s\S]*)<div class="porcentaje2">(.*)%<\/div>([\s\S]*)/', '{"beroiza": "\3", "victoria": "\6", "turchetti": "\9"}', $archivo2);
+$datospj = preg_replace('/([\s\S]*)"Fuerza Santa Cruz"([\s\S]*)<div class="porcentaje2">(.*)%<\/div>([\s\S]*)"Eva Per&oacute;n"([\s\S]*)<div class="porcentaje2">(.*)%<\/div>([\s\S]*)"Lealtad y Militancia"([\s\S]*)<div class="porcentaje2">(.*)%<\/div>([\s\S]*)Lista 38([\s\S]*)/', '{"beroiza": "\3", "victoria": "\6", "turchetti": "\9"}', $archivo2);
 $datospj = json_decode($datospj);
 
 $datosunion = preg_replace('/([\s\S]*)"Juntos por el Cambio"([\s\S]*)<div class="porcentaje2">(.*)%<\/div>([\s\S]*)"Proyecto Alternativo"([\s\S]*)<div class="porcentaje2">(.*)%<\/div>([\s\S]*)/', '{"costa": "\3", "prades": "\6"}', $archivo2);
@@ -41,6 +44,16 @@ $mesas_escrutadas = $mesas->escrutadas." de ".$mesas->totales;
 		<!--[if IE 9]><style>.ie-note-2{display:block;}</style><![endif]-->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-42797039-1', 'santacruzcandidatos.com');
+	  ga('send', 'pageview');
+
+	</script>
         <script>
         var grafico_actual;
 
@@ -49,64 +62,65 @@ $mesas_escrutadas = $mesas->escrutadas." de ".$mesas->totales;
         $(document).on("ready", iniciar);
 
         function iniciar () {
-            $(document).tooltip();
+            $(document).tooltip({ track: true });
+
             $("#f-pj").on("click", function () {
             	
-                $("#li1 span").text("Beroiza");
+                $("#li1 span").html("Beroiza");
                 $("#li1 .bar-inner").text("<?php echo $datospj->beroiza;?>")
                 $("#li1 .bar-wrapper").attr("title", "<?php echo $datospj->beroiza;?>%")
                 $("#li1 .bar-inner").css({"height":"<?php echo $datospj->beroiza;?>%"})
             	
-                $("#li2 span").text("Victoria");
+                $("#li2 span").html("Victoria");
                 $("#li2 .bar-inner").text("<?php echo $datospj->victoria;?>")
                 $("#li2 .bar-wrapper").attr("title", "<?php echo $datospj->victoria;?>%")
                 $("#li2 .bar-inner").css({"height":"<?php echo $datospj->victoria;?>%"})
 
-                $("#li3 span").text("Turchetti");
+                $("#li3 span").html("Turchetti");
                 $("#li3 .bar-inner").text("<?php echo $datospj->turchetti;?>")
                 $("#li3 .bar-wrapper").attr("title", "<?php echo $datospj->turchetti;?>%")
                 $("#li3 .bar-inner").css({"height":"<?php echo $datospj->turchetti;?>%"})
 
-                $("#li3").slideDown();
-                $("#li4").slideUp();
-                $("#li5").slideUp();
+                $("#li3").fadeIn();
+                $("#li4").fadeOut();
+                $("#li5").fadeOut();
 
             })
             $("#f-union").on("click", function () {
             	
-                $("#li1 span").text("Costa");
+                $("#li1 span").html('Costa');
                 $("#li1 .bar-inner").text("<?php echo $datosunion->costa;?>")
                 $("#li1 .bar-wrapper").attr("title", "<?php echo $datosunion->costa;?>%")
                 $("#li1 .bar-inner").css({"height":"<?php echo $datosunion->costa;?>%"})
             	
-                $("#li2 span").text("Prades");
+                $("#li2 span").html('Prades');
                 $("#li2 .bar-inner").text("<?php echo $datosunion->prades;?>")
                 $("#li2 .bar-wrapper").attr("title", "<?php echo $datosunion->prades;?>%")
                 $("#li2 .bar-inner").css({"height":"<?php echo $datosunion->prades;?>%"})
 
 
-                $("#li3").slideUp();
-                $("#li4").slideUp();
-                $("#li5").slideUp();
+                $("#li3").fadeOut();
+                $("#li4").fadeOut();
+                $("#li5").fadeOut();
 
             })
 
             $("#f-partidos").on("click", function () {
             	
-                $("#li3").slideDown();
-                $("#li4").slideDown();
-                $("#li5").slideDown();
-                $("#li1 span").text("FPV");
+                $("#li3").fadeIn();
+                $("#li4").fadeIn();
+                $("#li5").fadeIn();
+                $("#li1 span").html('<picture><img src="http://elecciones2013.santacruz.gov.ar/images/partido501.png" alt=""></picture>FPV');
                 $("#li1 .bar-inner").text("<?php echo $datos->fpv;?>")
                 $("#li1 .bar-wrapper").attr("title", "<?php echo $datos->fpv;?>%")
                 $("#li1 .bar-inner").css({"height":"<?php echo $datos->fpv;?>%"})
             	
-                $("#li2 span").text("PJ");
+                $("#li2 span").html('<picture style="width:15%!important;"><img src="http://elecciones2013.santacruz.gov.ar/images/partido2b.png" alt=""></picture>PJ');
                 $("#li2 .bar-inner").text("<?php echo $datos->pj;?>")
                 $("#li2 .bar-wrapper").attr("title", "<?php echo $datos->pj;?>%")
                 $("#li2 .bar-inner").css({"height":"<?php echo $datos->pj;?>%"})
 
-                $("#li3 span").text("UCR-ARI-EC");
+                $("#li3 span").html('<picture><img src="http://elecciones2013.santacruz.gov.ar/images/partido502.png" alt=""></picture>UCR-ARI-EC');
                 $("#li3 .bar-inner").text("<?php echo $datos->union;?>")
                 $("#li3 .bar-wrapper").attr("title", "<?php echo $datos->union;?>%")
                 $("#li3 .bar-inner").css({"height":"<?php echo $datos->union;?>%"})
@@ -167,7 +181,7 @@ $mesas_escrutadas = $mesas->escrutadas." de ".$mesas->totales;
                 <br>
                 <ul class="graph-container">
                     <li id="li1">
-                        <span>FPV</span>
+                        <span><picture><img src="http://elecciones2013.santacruz.gov.ar/images/partido501.png" alt=""></picture>FPV</span>
                         <div class="bar-wrapper" title="<?php echo $datos->fpv;?>%">
                             <div class="bar-container">
                                 <div class="bar-background"></div>
@@ -177,7 +191,7 @@ $mesas_escrutadas = $mesas->escrutadas." de ".$mesas->totales;
                         </div>
                     </li>
                     <li id="li2">
-                        <span>PJ</span>
+                        <span><picture style="width:15%!important;"><img src="http://elecciones2013.santacruz.gov.ar/images/partido2b.png" alt=""></picture>PJ</span>
                         <div class="bar-wrapper" title="<?php echo $datos->pj;?>%">
                             <div class="bar-container">
                                 <div class="bar-background"></div>
@@ -187,7 +201,7 @@ $mesas_escrutadas = $mesas->escrutadas." de ".$mesas->totales;
                         </div>
                     </li>
                     <li id="li3">
-                        <span>UCR-ARI-EC</span>
+                        <span><picture><img src="http://elecciones2013.santacruz.gov.ar/images/partido502.png" alt=""></picture>UCR-ARI-EC</span>
                         <div class="bar-wrapper" title="<?php echo $datos->union;?>">
                             <div class="bar-container">
                                 <div class="bar-background"></div>
@@ -197,7 +211,7 @@ $mesas_escrutadas = $mesas->escrutadas." de ".$mesas->totales;
                         </div>
                     </li>
                     <li id="li4">
-                        <span>PO</span>
+                        <span><picture><img src="http://elecciones2013.santacruz.gov.ar/images/partido154.png" alt=""></picture>PO</span>
                         <div class="bar-wrapper" title="<?php echo $datos->po;?>%">
                             <div class="bar-container">
                                 <div class="bar-background"></div>
@@ -207,7 +221,7 @@ $mesas_escrutadas = $mesas->escrutadas." de ".$mesas->totales;
                         </div>
                     </li>
                     <li id="li5">
-                        <span>MST</span>
+                        <span><picture><img src="http://elecciones2013.santacruz.gov.ar/images/partido38.png" alt=""></picture>MST</span>
                         <div class="bar-wrapper" title="<?php echo $datos->fut;?>%">
                             <div class="bar-container">
                                 <div class="bar-background"></div>

@@ -2,7 +2,7 @@
 
 header('Content-Type: text/css');
 
-$filename = "http://elecciones2013.santacruz.gov.ar/datos.php";
+$filename = "http://www.santacruzcandidatos.com/grafico/data.php";
 
 $archivo2 = file_get_contents($filename);
 $archivo = preg_replace('/([\s\S]*)Lista 2([\s\S]*)<div class="porcentaje">(.*)%<\/([\s\S]*)Lista 38([\s\S]*)<div class="porcentaje">([\s\S]*)<span>(.*)<\/span>([\s\S]*)Lista 154([\s\S]*)<div class="porcentaje">([\s\S]*)<span>(.*)<\/span>([\s\S]*)Lista 501([\s\S]*)<div class="porcentaje">([\s\S]*)<span>(.*)<\/span>([\s\S]*)Lista 502([\s\S]*)<div class="porcentaje">(.*)%<\/([\s\S]*)([\s\S]*)/', '{ "pj" : "\3%", "fut": "\7", "po": "\11", "fpv": "\15", "union": "\18%"}', $archivo2);
@@ -642,3 +642,27 @@ b{
 	color:#757575
 }
 
+
+input[name^="fill-"] + label{
+	font-size: 1.2em;
+	width:80px;
+}
+
+.button-label{
+	font-weight:200;
+	padding: 0.8em 1em;
+	top: 0.3em;
+}
+
+picture{
+	vertical-align: bottom;
+display: inline-block;
+width: 30%;
+margin-right: 0.2em;
+position:relative;
+top:0.2em;
+}
+
+picture img{
+	width:100%
+}

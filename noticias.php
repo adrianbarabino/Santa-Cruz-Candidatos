@@ -15,7 +15,7 @@
 			$filename = "http://feed43.com/8633484411154562.xml";
 		}
 		if($medio == "grafico"){
-			$filename = "http://elecciones2013.santacruz.gov.ar/datos.php";
+			$filename = "http://www.santacruzcandidatos.com/grafico/data.php";
 		}
 	}
 

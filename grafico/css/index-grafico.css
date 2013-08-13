@@ -14,10 +14,20 @@ a{
 	color: #555;
 	text-decoration: none;
 }
+
 .contenedor-grafico{
 	width: 100%;
 	position: relative;
 }
+
+body .ui-tooltip{
+	padding: 0.5em 1.9em;
+	background: #333;
+	color: white;
+	width: 120px;
+	text-align:center;
+}
+
 .grafico{
 	text-align: center;
 	width: 100%;
